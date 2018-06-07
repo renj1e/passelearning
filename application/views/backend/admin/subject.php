@@ -73,6 +73,14 @@
                 	<?php echo form_open(site_url('admin/subject/create') , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
                         <div class="padded">
                             <div class="form-group">
+                                <label for="field-2" class="col-sm-3 control-label">Entry Code</label>
+
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="student_code" value="<?php echo substr(md5(date('hisY').uniqid(rand(), true)), 0, 10); ?>" disabled="yes" data-validate="required" id="class_id"
+                                        data-message-required="<?php echo get_phrase('value_required');?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-sm-3 control-label">Subject Code</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" name="code" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>"/>

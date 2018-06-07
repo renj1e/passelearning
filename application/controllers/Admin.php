@@ -694,6 +694,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect(site_url('login'), 'refresh');
         if ($param1 == 'create') {
+            $data['entry_code']       = $this->input->post('entry_code');
             $data['code']       = $this->input->post('code');
             $data['name']       = $this->input->post('name');
             $data['sem']       = $this->input->post('sem');
@@ -708,6 +709,7 @@ class Admin extends CI_Controller
             redirect(site_url('admin/subject/' . $data['class_id']), 'refresh');
         }
         if ($param1 == 'do_update') {
+            $data['entry_code']       = $this->input->post('entry_code');
             $data['code']       = $this->input->post('code');
             $data['name']       = $this->input->post('name');
             $data['sem']       = $this->input->post('sem');

@@ -74,7 +74,16 @@ class Student extends CI_Controller
     {
         if ($this->session->userdata('student_login') != 1)
             redirect(base_url(), 'refresh');
-
+        if ($param1 == 'request_access')
+        {
+            $data['entry_code']     = $this->input->post('entry_code');
+            $data['subject_id']     = $this->input->post('subject_id');
+            $data['acceptor_id']     = $this->input->post('acceptor_id');
+            $data['student_id']     = $this->input->post('student_id');
+            $data['status']     = 0;
+            $data['date_accepted'] = strtotime(date("m/d/Y"));
+            $this->db->insert('student_subject_request', $data);
+        }
         $student_profile         = $this->db->get_where('student', array(
             'student_id' => $this->session->userdata('student_id')
         ))->row();
@@ -92,7 +101,13 @@ class Student extends CI_Controller
         $this->load->view('backend/index', $page_data);
     }
 
+    function request_access()
+    {
 
+        $page_data['page_name']  = 'subjectss';
+        $page_data['page_title'] = get_phrase('manage_subject');
+        $this->load->view('backend/index', $page_data);
+    }
 
     function student_marksheet($student_id = '') {
         if ($this->session->userdata('student_login') != 1)

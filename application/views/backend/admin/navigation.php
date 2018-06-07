@@ -78,11 +78,17 @@
                         <?php
                         $classes = $this->db->get('class')->result_array();
                         foreach ($classes as $row):
+
+                            $all_students_by_dept   = $this->db->get_where('enroll' , array(
+                                'year' => $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description,
+                                'sem' => $this->db->get_where('settings' , array('type' => 'running_sem_by_year'))->row()->description,
+                                'class_id' => $row['class_id']
+                            ))->num_rows();
                             ?>
                             <li class="<?php if ($page_name == 'student_information' && $class_id == $row['class_id'] || $page_name == 'student_marksheet' && $class_id == $row['class_id']) echo 'active'; ?>">
                             <!--<li class="<?php if ($page_name == 'student_information' && $page_name == 'student_marksheet' && $class_id == $row['class_id']) echo 'active'; ?>">-->
                                 <a href="<?php echo site_url('admin/student_information/' . $row['class_id']); ?>">
-                                    <span><?php echo $row['name']; ?></span>
+                                    <span><?php echo $row['name']; ?> <small class="badge badge-info"><?php echo $all_students_by_dept;?></small></span>
                                 </a>
                             </li>
                         <?php endforeach; ?>

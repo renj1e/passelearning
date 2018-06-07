@@ -19,6 +19,7 @@
                     		<th><div>Department</div></th>
                     		<th><div><?php echo get_phrase('subject_name');?></div></th>
                     		<th><div>Instructor</div></th>
+                    		<th><div>Action</div></th>
 						</tr>
 					</thead>
                     <tbody>
@@ -27,6 +28,53 @@
 							<td><?php echo $this->crud_model->get_type_name_by_id('class',$row['class_id']);?></td>
 							<td><?php echo $row['name'];?></td>
 							<td><?php echo $this->crud_model->get_type_name_by_id('teacher',$row['teacher_id']);?></td>
+							<td>
+								
+                                <div class="btn-group">
+
+                                	<?php
+                                		$request = $this->db->get_where('student_subject_request' , array(
+                                			'subject_id'=>$row['subject_id'],
+                                			'acceptor_id'=>$row['teacher_id'],
+                                			'student_id'=>$this->session->userdata('student_id'),
+                                			'status'=>0
+                                		))->num_rows();
+                                		$requestAccepted = $this->db->get_where('student_subject_request' , array(
+                                			'subject_id'=>$row['subject_id'],
+                                			'acceptor_id'=>$row['teacher_id'],
+                                			'student_id'=>$this->session->userdata('student_id'),
+                                			'status'=>1
+                                		))->num_rows();
+
+                                		if ($request > 0)
+                                		{
+                                	?>
+	                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+	                                        Action for request <span class="caret"></span>
+	                                    </button>
+	                                    <ul class="dropdown-menu dropdown-default pull-right" role="menu">
+	                                        <li>
+	                                            <a href="#" onclick="showAjaxModal('<?php echo site_url('modal/popup/modal_request_access?name='.$row['name'].'&subject_id='.$row['subject_id'].'&acceptor_id='.$row['teacher_id'].'&student_id='.$this->session->userdata('student_id'));?>');">
+	                                                <i class="entypo-code"></i>
+	                                                    Request for access
+	                                                </a>
+	                                        </li>
+	                                    </ul>
+                                	<?php
+                                		}
+                                		elseif ($requestAccepted > 0)
+                                		{
+                                	?>
+	                                    <button type="button" class="btn btn-success btn-sm ">
+	                                        Approved
+	                                    </button>
+                                	<?php }else{ ?>
+	                                    <button type="button" class="btn btn-inverse btn-sm ">
+	                                        Requesting...
+	                                    </button>
+                                	<?php } ?>
+                                </div>
+							</td>
 							
                         </tr>
                         <?php endforeach;?>
