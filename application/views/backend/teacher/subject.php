@@ -18,7 +18,7 @@
                 <table class="table table-bordered datatable" id="table_export">
                 	<thead>
                 		<tr>
-                    		<th><div>Department</div></th>
+                    		<th><div>Subject Code</div></th>
                     		<th><div><?php echo get_phrase('subject_name');?></div></th>
                     		<th><div>Instructor</div></th>
 						</tr>
@@ -26,7 +26,7 @@
                     <tbody>
                     	<?php $count = 1;foreach($subjects as $row):?>
                         <tr>
-							<td><?php echo $this->crud_model->get_type_name_by_id('class',$row['class_id']);?></td>
+							<td><b><?php echo $row['code'];?></b></td>
 							<td><?php echo $row['name'];?></td>
 							<td><?php echo $this->crud_model->get_type_name_by_id('teacher',$row['teacher_id']);?></td>
                         </tr>

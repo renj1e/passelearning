@@ -69,6 +69,34 @@
                   </div>
 
                   <div class="form-group">
+                      <label  class="col-sm-3 control-label">Semester</label>
+                      <div class="col-sm-9">
+                          <select name="running_sem_by_year" class="form-control selectboxit">
+                          <?php
+                          $running_sem_by_year = $this->db->get_where('settings' , array('type'=>'running_sem_by_year'))->row()->description;
+                          switch ($running_sem_by_year)
+                          {
+                            case '1':
+                              $running_sem = 'First Semester';
+                              break;
+                            case '2':
+                              $running_sem = 'Second Semester';
+                              break;                            
+                            default:
+                              $running_sem = 'Summer';
+                              break;
+                          }
+                          ?>
+                          <option value="" disabled="true" selected="yes">Current Semester: <?php echo $running_sem;?></option>
+                          <option value="0">Select</option>
+                          <option value="1">First Semester </option>
+                          <option value="2">Second Semester </option>
+                          <option value="3">Summer </option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
                       <label  class="col-sm-3 control-label"><?php echo get_phrase('language');?></label>
                       <div class="col-sm-9">
                           <select name="language" class="form-control selectboxit">

@@ -64,6 +64,18 @@
                     </a>
                     <ul>
                         <?php
+
+                        $all_students   = $this->db->get_where('enroll' , array(
+                            'year' => $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description,
+                            'sem' => $this->db->get_where('settings' , array('type' => 'running_sem_by_year'))->row()->description
+                        ))->num_rows();
+                        ?>
+                            <li class="<?php if ($page_name == 'student_information') echo 'active'; ?>">
+                                <a href="<?php echo site_url('admin/student_information/0'); ?>">
+                                    <span>All Students <small class="badge badge-info"><?php echo $all_students;?></small></span>
+                                </a>
+                            </li>
+                        <?php
                         $classes = $this->db->get('class')->result_array();
                         foreach ($classes as $row):
                             ?>
@@ -123,10 +135,11 @@
                 <?php
                 $classes = $this->db->get('class')->result_array();
                 foreach ($classes as $row):
+                    $subject = $this->db->query('SELECT * FROM `subject` WHERE  `class_id`='.$row["class_id"])->num_rows();
                     ?>
                     <li class="<?php if ($page_name == 'subject' && $class_id == $row['class_id']) echo 'active'; ?>">
-                        <a href="<?php echo site_url('admin/subject/' . $row['class_id']); ?>">
-                            <span>Dept: <?php echo $row['name']; ?></span>
+                        <a href="<?php echo site_url($account_type.'/subject/' . $row['class_id']); ?>">
+                            <span> <?php echo $row['name']; ?> <small class="badge badge-info"><?php echo $subject?></small></span>
                         </a>
                     </li>
                 <?php endforeach; ?>

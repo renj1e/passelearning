@@ -85,15 +85,19 @@
                 <span><?php echo get_phrase('subject'); ?> <small>by Department</small></span>
             </a>
             <ul>
-                <?php $classes = $this->db->get('class')->result_array();
+                <?php
+                $classes = $this->db->get('class')->result_array();
                 foreach ($classes as $row):
+                    $running_sem_by_year = $this->db->get_where('settings' , array('type'=>'running_sem_by_year'))->row()->description;
+                    $subject = $this->db->query('SELECT * FROM `subject` WHERE `teacher_id`='.$this->session->userdata("teacher_id").' AND `sem`='.$running_sem_by_year.' AND `class_id`='.$row["class_id"])->num_rows();
+                    if ($subject > 0){
                     ?>
                     <li class="<?php if ($page_name == 'subject' && $class_id == $row['class_id']) echo 'active'; ?>">
-                        <a href="<?php echo site_url($account_type.'/subject/'.$row['class_id']); ?>">
-                            <span><?php echo $row['name']; ?></span>
+                        <a href="<?php echo site_url($account_type.'/subject/' . $row['class_id']); ?>">
+                            <span><?php echo $row['name']; ?> <small class="badge badge-info"><?php echo $subject;?></small></span>
                         </a>
                     </li>
-                <?php endforeach; ?>
+                <?php } endforeach; ?>
             </ul>
         </li>
 

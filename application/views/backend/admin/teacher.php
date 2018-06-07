@@ -2,7 +2,7 @@
             <a href="javascript:;" onclick="showAjaxModal('<?php echo site_url('modal/popup/modal_teacher_add/');?>');"
             	class="btn btn-primary pull-right">
                 <i class="entypo-plus-circled"></i>
-            	<?php echo get_phrase('add_new_teacher');?>
+            	Add New Instructor
                 </a>
                 <br><br>
                <table class="table table-bordered datatable" id="teachers">

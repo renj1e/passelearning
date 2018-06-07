@@ -85,9 +85,9 @@ class Admin extends CI_Controller
             redirect(site_url('login'), 'refresh');
 
 		$page_data['page_name']  	= 'student_information';
-		$page_data['page_title'] 	= get_phrase('student_information'). " - ".get_phrase('class')." : ".
-											$this->crud_model->get_class_name($class_id);
+		$page_data['page_title'] 	= get_phrase('student_information'). " - Department : ".$this->crud_model->get_class_name($class_id);
 		$page_data['class_id'] 	= $class_id;
+
 		$this->load->view('backend/index', $page_data);
 	}
 
@@ -696,6 +696,7 @@ class Admin extends CI_Controller
         if ($param1 == 'create') {
             $data['code']       = $this->input->post('code');
             $data['name']       = $this->input->post('name');
+            $data['sem']       = $this->input->post('sem');
             $data['class_id']   = $this->input->post('class_id');
             $data['year']       = $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description;
             if ($this->input->post('teacher_id') != null) {
@@ -709,6 +710,7 @@ class Admin extends CI_Controller
         if ($param1 == 'do_update') {
             $data['code']       = $this->input->post('code');
             $data['name']       = $this->input->post('name');
+            $data['sem']       = $this->input->post('sem');
             $data['class_id']   = $this->input->post('class_id');
             $data['teacher_id'] = $this->input->post('teacher_id');
             $data['year']       = $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description;
@@ -2678,6 +2680,10 @@ class Admin extends CI_Controller
             $this->db->where('type' , 'running_year');
             $this->db->update('settings' , $data);
 
+            $data['description'] = $this->input->post('running_sem_by_year');
+            $this->db->where('type' , 'running_sem_by_year');
+            $this->db->update('settings' , $data);
+
             $data['description'] = $this->input->post('purchase_code');
             $this->db->where('type' , 'purchase_code');
             $this->db->update('settings' , $data);
@@ -2883,13 +2889,39 @@ class Admin extends CI_Controller
     {
         $this->load->view('backend/admin/change_session');
     }
+    function get_session_changer_sem()
+    {
+        $this->load->view('backend/admin/change_session_sem');
+    }
 
     function change_session()
     {
         $data['description'] = $this->input->post('running_year');
         $this->db->where('type' , 'running_year');
         $this->db->update('settings' , $data);
-        $this->session->set_flashdata('flash_message' , get_phrase('session_changed'));
+        $this->session->set_flashdata('flash_message' , 'Academic Year changed to '.'<b>'.$data['description'].'</b>');
+        redirect(site_url('admin/dashboard'), 'refresh');
+    }
+
+    function change_session_sem()
+    {
+        $data['description'] = $this->input->post('running_sem_by_year');
+        $this->db->where('type' , 'running_sem_by_year');
+        $this->db->update('settings' , $data);
+
+            switch ($data['description'])
+            {
+                case '1':
+                    $description = 'First Semester';
+                break;
+                case '2':
+                    $description = 'Second Semester';
+                break;                            
+                default:
+                    $description = 'Summer';
+                break;
+            }
+        $this->session->set_flashdata('flash_message' , 'Semester changed to '.'<b>'.$description.'</b>');
         redirect(site_url('admin/dashboard'), 'refresh');
     }
 

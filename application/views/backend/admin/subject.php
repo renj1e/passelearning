@@ -104,6 +104,18 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="field-2" class="col-sm-3 control-label">Semester</label>
+
+                                <div class="col-sm-5">
+                                    <select name="sem" class="form-control selectboxit">
+                                      <option value=""><?php echo get_phrase('select');?></option>
+                                      <option value="1">1st Semester</option>
+                                      <option value="2">2nd Semester</option>
+                                      <option value="3">Summer</option>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-sm-3 control-label">Instructor</label>
                                 <div class="col-sm-5">
                                     <select name="teacher_id" class="form-control selectboxit" style="width:100%;">

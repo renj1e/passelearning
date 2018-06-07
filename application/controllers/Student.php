@@ -84,7 +84,8 @@ class Student extends CI_Controller
         ))->row()->class_id;
         $page_data['subjects']   = $this->db->get_where('subject', array(
             'class_id' => $student_class_id,
-                'year' => $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description
+                'year' => $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description,
+                'sem' => $this->db->get_where('settings' , array('type' => 'running_sem_by_year'))->row()->description
         ))->result_array();
         $page_data['page_name']  = 'subject';
         $page_data['page_title'] = get_phrase('manage_subject');

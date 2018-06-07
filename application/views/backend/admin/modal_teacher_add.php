@@ -4,7 +4,7 @@
         	<div class="panel-heading">
             	<div class="panel-title" >
             		<i class="entypo-plus-circled"></i>
-					<?php echo get_phrase('add_teacher');?>
+					Add New Instructor
             	</div>
             </div>
 			<div class="panel-body">
@@ -19,12 +19,7 @@
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('designation');?></label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" name="designation" value="" >
-						</div>
-					</div>
+							<input type="hidden" class="form-control" name="designation" value="none" >
 
 					<div class="form-group">
 						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('birthday');?></label>
@@ -105,15 +100,7 @@
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('show_on_website');?></label>
-						<div class="col-sm-5">
-							<select name="show_on_website" class="form-control selectboxit">
-                  <option value="1"><?php echo get_phrase('yes');?></option>
-                  <option value="0"><?php echo get_phrase('no');?></option>
-              </select>
-						</div>
-					</div>
+                            <input type="hidden" class="form-control" name="show_on_website" value="1" >
 
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('photo');?></label>

@@ -41,6 +41,14 @@
                             <th width="80"><div><?php echo get_phrase('id_no');?></div></th>
                             <th width="80"><div><?php echo get_phrase('photo');?></div></th>
                             <th><div><?php echo get_phrase('name');?></div></th>
+                            <?php
+                                if ($class_id < 1)
+                                {
+                                ?>
+                                <th><div>Department - Block (Semester)</div></th>
+                                <?php
+                                }
+                            ?>
                             <th class="span3"><div><?php echo get_phrase('address');?></div></th>
                             <th><div><?php echo get_phrase('email');?></div></th>
                             <th><div><?php echo get_phrase('options');?></div></th>
@@ -48,9 +56,17 @@
                     </thead>
                     <tbody>
                         <?php
+                        if ($class_id > 0)
+                        {
                                 $students   =   $this->db->get_where('enroll' , array(
-                                    'class_id' => $class_id , 'year' => $running_year
+                                    'class_id' => $class_id , 'year' => $running_year , 'sem' => $this->db->get_where('settings' , array('type' => 'running_sem_by_year'))->row()->description
                                 ))->result_array();
+                        }
+                        else
+                        {
+                                $students   =   $this->db->get_where('enroll' , array('year' => $running_year, 'sem' => $this->db->get_where('settings' , array('type' => 'running_sem_by_year'))->row()->description))->result_array();
+                        }
+
                                 foreach($students as $row):?>
                         <tr>
                             <td><?php echo $this->db->get_where('student' , array(
@@ -64,6 +80,50 @@
                                     ))->row()->name;
                                 ?>
                             </td>
+                            <?php
+                                if ($class_id < 1)
+                                {
+                                ?>
+                                    <td>
+                                        <?php
+                                            $classid = $this->db->get_where('enroll' , array(
+                                                'student_id' => $row['student_id']
+                                            ))->row()->class_id;
+                                            $class = $this->db->get_where('class' , array(
+                                            'class_id' => $classid
+                                            ))->row()->name;
+
+                                            $section_id = $this->db->get_where('enroll' , array(
+                                                'student_id' => $row['student_id']
+                                            ))->row()->section_id;
+                                            $block = $this->db->get_where('section' , array(
+                                            'section_id' => $section_id
+                                            ))->row()->name;
+
+                                            $semester = $this->db->get_where('enroll' , array(
+                                                'student_id' => $row['student_id']
+                                            ))->row()->sem;
+
+                                            if ($semester == 1)
+                                            {                                            
+                                              $sem = 'First Semester';
+                                            }
+                                            elseif ($semester == 2)
+                                            {                                  
+                                              $sem = 'Second Semester';
+                                            }
+                                            else
+                                            {                                 
+                                              $sem = 'Summer';
+                                            }
+
+                                        echo $class . ' - '.$block.' (<b>'.$sem.'</b>) ';
+
+                                        ?>
+                                    </td>
+                                <?php
+                                }
+                            ?>
                             <td>
                                 <?php
                                     echo $this->db->get_where('student' , array(

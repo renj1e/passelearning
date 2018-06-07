@@ -79,14 +79,14 @@
                 	<?php echo form_open(site_url('admin/classes/create') , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
                         <div class="padded">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label"><?php echo get_phrase('name');?></label>
+                                <label class="col-sm-3 control-label">Department</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" name="name" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>"/>
                                 </div>
                             </div>
                             <input type="hidden" class="form-control" name="name_numeric" value="0"/>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Instructor</label>
+                                <label class="col-sm-3 control-label">Dept. Head</label>
                                 <div class="col-sm-5">
                                     <select name="teacher_id" class="form-control select2" style="width:100%;" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>">
                                         <option value="">Select Instructor</option>

@@ -14,7 +14,35 @@
 	           				<?php if($account_type == 'admin'):?>
 	           				onclick="get_session_changer()"
 	           			<?php endif;?>>
-	           				Academic Year : <?php echo $running_year.' ';?><i class="entypo-down-dir"></i>
+	           				A.Y. : <b><?php echo $running_year;?></b><i class="entypo-down-dir"></i>
+	           			</a>
+	           		</h4>
+	           </li>
+           </div>
+        	<div id="session_static_sem">
+	           <li>
+	           		<h4>
+
+                        <?php
+                          $running_sem_by_year = $this->db->get_where('settings' , array('type'=>'running_sem_by_year'))->row()->description;
+                          switch ($running_sem_by_year)
+                          {
+                            case '1':
+                              $running_sem = 'First Semester';
+                              break;
+                            case '2':
+                              $running_sem = 'Second Semester';
+                              break;                            
+                            default:
+                              $running_sem = 'Summer';
+                              break;
+                          }
+                        ?>
+	           			<a href="#" style="color: #696969;"
+	           				<?php if($account_type == 'admin'):?>
+	           				onclick="get_session_changer_sem()"
+	           			<?php endif;?>>
+	           				Semester : <b><?php echo $running_sem;?></b><i class="entypo-down-dir"></i>
 	           			</a>
 	           		</h4>
 	           </li>
@@ -28,7 +56,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
                         	<i class="entypo-user"></i>
 													<?php 
-														$name = $this->db->get_where($this->session->userdata('login_type'), [$this->session->userdata('login_type').'_id' => $this->session->userdata('login_user_id')] )->row()->name;
 														$userType = '';
 
 														if ($this->session->userdata('admin_login') == 1)
@@ -44,7 +71,7 @@
 															$userType = 'Student Account';
 														}
 
-														echo $name.' ( <b>'. $userType.'</b> ) ';
+														echo $this->session->userdata('name').' ( <b>'. $userType.'</b> ) ';
 													?>
                     </a>
 
@@ -100,6 +127,16 @@
             success: function(response)
             {
                 jQuery('#session_static').html(response);
+            }
+        });
+	}
+	function get_session_changer_sem()
+	{
+		$.ajax({
+            url: '<?php echo site_url('admin/get_session_changer_sem');?>',
+            success: function(response)
+            {
+                jQuery('#session_static_sem').html(response);
             }
         });
 	}

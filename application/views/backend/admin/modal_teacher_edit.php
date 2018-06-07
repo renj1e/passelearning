@@ -10,7 +10,7 @@ foreach ( $edit_data as $row):
         	<div class="panel-heading">
             	<div class="panel-title" >
             		<i class="entypo-plus-circled"></i>
-					<?php echo get_phrase('edit_teacher');?>
+					Edit Instructor
             	</div>
             </div>
 			<div class="panel-body">
@@ -43,13 +43,7 @@ foreach ( $edit_data as $row):
                                     <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" data-validate="required"/>
                                 </div>
                             </div>
-														<div class="form-group">
-															<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('designation');?></label>
-															<div class="col-sm-5">
-																<input type="text" class="form-control" name="designation"
-																	value="<?php echo $row['designation'] == null ? '' : $row['designation'];?>" >
-															</div>
-														</div>
+                            <input type="hidden" class="form-control" name="designation" value="none" >
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('birthday');?></label>
                                 <div class="col-sm-5">
@@ -113,15 +107,7 @@ foreach ( $edit_data as $row):
 															</div>
 														</div>
 
-														<div class="form-group">
-															<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('show_on_website');?></label>
-															<div class="col-sm-5">
-																<select name="show_on_website" class="form-control selectboxit">
-									                  <option value="1" <?php if ($row['show_on_website'] == 1) echo 'selected';?>><?php echo get_phrase('yes');?></option>
-									                  <option value="0" <?php if ($row['show_on_website'] == 0) echo 'selected';?>><?php echo get_phrase('no');?></option>
-									              </select>
-															</div>
-														</div>
+                            <input type="hidden" class="form-control" name="show_on_website" value="1" >
 
 
                         <div class="form-group">

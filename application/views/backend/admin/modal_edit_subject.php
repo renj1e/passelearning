@@ -28,7 +28,7 @@ foreach ( $edit_data as $row):
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Department</label>
                     <div class="col-sm-5 controls">
-                        <select name="class_id" class="form-control selectboxit">
+                        <select name="class_id" class="form-control">
                             <?php 
                             $classes = $this->db->get('class')->result_array();
                             foreach($classes as $row2):
@@ -44,9 +44,35 @@ foreach ( $edit_data as $row):
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="field-2" class="col-sm-3 control-label">Semester</label>
+                    <?php
+                      switch ($row['sem'])
+                      {
+                        case '1':
+                          $sem = 'First Semester';
+                          break;
+                        case '2':
+                          $sem = 'Second Semester';
+                          break;                            
+                        default:
+                          $sem = 'Summer';
+                          break;
+                      }
+                    ?>
+                    <div class="col-sm-5">
+                        <select name="sem" class="form-control">
+                          <option value="<?php echo $row['sem']?>">Selected: <?php echo $sem?></option>
+                          <option value=""><?php echo get_phrase('select');?></option>
+                          <option value="1">1st Semester</option>
+                          <option value="2">2nd Semester</option>
+                          <option value="3">Summer</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-3 control-label">Instructor</label>
                     <div class="col-sm-5 controls">
-                        <select name="teacher_id" class="form-control selectboxit">
+                        <select name="teacher_id" class="form-control">
                             <?php 
                             $teachers = $this->db->get('teacher')->result_array();
                             foreach($teachers as $row2):
