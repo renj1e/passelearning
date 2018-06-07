@@ -709,6 +709,7 @@ class Admin extends CI_Controller
             redirect(site_url('admin/subject/' . $data['class_id']), 'refresh');
         }
         if ($param1 == 'do_update') {
+            
             $data['entry_code']       = $this->input->post('entry_code');
             $data['code']       = $this->input->post('code');
             $data['name']       = $this->input->post('name');

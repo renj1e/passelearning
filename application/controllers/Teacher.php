@@ -212,6 +212,14 @@ class Teacher extends CI_Controller
 
             redirect(site_url('teacher/subject/'.$data['class_id']), 'refresh');
         }
+        if ($param1 == 'request_response')
+        {
+            $data['status']     = $param3;
+            $this->db->where('id' , $param2);
+            $this->db->update('student_subject_request', $data);
+
+            redirect(site_url('teacher/student_information/0'), 'refresh');
+        }
         if ($param1 == 'do_update') {
             $data['name']       = $this->input->post('name');
             $data['class_id']   = $this->input->post('class_id');

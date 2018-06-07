@@ -80,9 +80,11 @@ class Student extends CI_Controller
             $data['subject_id']     = $this->input->post('subject_id');
             $data['acceptor_id']     = $this->input->post('acceptor_id');
             $data['student_id']     = $this->input->post('student_id');
-            $data['status']     = 0;
+            $data['status']     = 4;
             $data['date_accepted'] = strtotime(date("m/d/Y"));
             $this->db->insert('student_subject_request', $data);
+
+            redirect(site_url('student/subject/'), 'refresh');
         }
         $student_profile         = $this->db->get_where('student', array(
             'student_id' => $this->session->userdata('student_id')

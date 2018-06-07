@@ -33,20 +33,15 @@
                                 <div class="btn-group">
 
                                 	<?php
-                                		$request = $this->db->get_where('student_subject_request' , array(
-                                			'subject_id'=>$row['subject_id'],
-                                			'acceptor_id'=>$row['teacher_id'],
-                                			'student_id'=>$this->session->userdata('student_id'),
-                                			'status'=>0
-                                		))->num_rows();
-                                		$requestAccepted = $this->db->get_where('student_subject_request' , array(
-                                			'subject_id'=>$row['subject_id'],
-                                			'acceptor_id'=>$row['teacher_id'],
-                                			'student_id'=>$this->session->userdata('student_id'),
-                                			'status'=>1
-                                		))->num_rows();
 
-                                		if ($request > 0)
+
+                                		$requestSubj = $this->db->get_where('student_subject_request' , array(
+                                			'subject_id'=>$row['subject_id'],
+                                			'acceptor_id'=>$row['teacher_id'],
+                                			'student_id'=>$this->session->userdata('student_id')
+                                		))->row()->status; 
+
+                                		if ($requestSubj == 0)
                                 		{
                                 	?>
 	                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -62,11 +57,19 @@
 	                                    </ul>
                                 	<?php
                                 		}
-                                		elseif ($requestAccepted > 0)
+                                		elseif ($requestSubj == 1)
                                 		{
                                 	?>
 	                                    <button type="button" class="btn btn-success btn-sm ">
 	                                        Approved
+	                                    </button>
+                                	<?php
+                                		}
+                                		elseif ($requestSubj == 2)
+                                		{
+                                	?>
+	                                    <button type="button" class="btn btn-danger btn-sm ">
+	                                        Declined
 	                                    </button>
                                 	<?php }else{ ?>
 	                                    <button type="button" class="btn btn-inverse btn-sm ">

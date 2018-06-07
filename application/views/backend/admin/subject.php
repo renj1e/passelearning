@@ -76,7 +76,7 @@
                                 <label for="field-2" class="col-sm-3 control-label">Entry Code</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="student_code" value="<?php echo substr(md5(date('hisY').uniqid(rand(), true)), 0, 10); ?>" disabled="yes" data-validate="required" id="class_id"
+                                    <input type="text" class="form-control" name="entry_code" value="<?php echo substr(md5(date('hisY').uniqid(rand(), true)), 0, 10); ?>" readonly="yes" data-validate="required" 
                                         data-message-required="<?php echo get_phrase('value_required');?>">
                                 </div>
                             </div>

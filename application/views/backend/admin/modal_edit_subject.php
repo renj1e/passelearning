@@ -14,6 +14,14 @@ foreach ( $edit_data as $row):
 			<div class="panel-body">
                 <?php echo form_open(site_url('admin/subject/do_update/'.$row['subject_id']) , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
                 <div class="form-group">
+                    <label for="field-2" class="col-sm-3 control-label">Entry Code</label>
+
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="entry_code" value="<?php echo substr(md5(date('hisY').uniqid(rand(), true)), 0, 10); ?>" readonly="yes" data-validate="required" 
+                                        data-message-required="<?php echo get_phrase('value_required');?>">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-3 control-label">Subject Code</label>
                     <div class="col-sm-5 controls">
                         <input type="text" class="form-control" name="code" value="<?php echo $row['code'];?>" required/>

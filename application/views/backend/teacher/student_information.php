@@ -40,6 +40,7 @@
                             <th class="span3"><div><?php echo get_phrase('address');?></div></th>
                             <th><div><?php echo get_phrase('email');?></div></th>
                             <th><div><?php echo get_phrase('options');?></div></th>
+                            <th><div>Action for</div></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,7 +65,7 @@
                                 <?php
                                     echo $this->db->get_where('student' , array(
                                         'student_id' => $row['student_id']
-                                    ))->row()->name;
+                                    ))->row()->name; 
                                 ?>
                             </td>
                             <td>
@@ -101,6 +102,43 @@
                                     </ul>
                                 </div>
 
+                            </td>
+                            <td>
+                                <div class="row">
+                                <?php
+                                $request = $this->db->get_where('student_subject_request' , array(
+                                    'student_id'=>$row['student_id'],
+                                    'acceptor_id'=>$this->session->userdata('teacher_id'),
+                                    'status'=>4
+                                ))->num_rows();
+
+                                $requestSubj = $this->db->get_where('student_subject_request' , array(
+                                    'student_id'=>$row['student_id'],
+                                    'acceptor_id'=>$this->session->userdata('teacher_id'),
+                                    'status'=>4
+                                ))->result_array();
+                                
+                                foreach ($requestSubj as $subj){
+                                $subjects = $this->db->get_where('subject' , array(
+                                    'subject_id'=>$subj['subject_id']
+                                ))->row()->name;
+
+                                ?>                                
+                                    <div class="col-sm-12">
+                                        <p class="btn-group"><?php echo $subjects?></p>
+                                        <p class="btn-group pull-right">
+                                            <a href="<?php echo site_url('teacher/subject/request_response/'.$subj['id'].'/1')?>" class="btn btn-success btn-sm ">
+                                                Accept
+                                            </a>
+                                            <a href="<?php echo site_url('teacher/subject/request_response/'.$subj['id'].'/2')?>" class="btn btn-danger btn-sm ">
+                                                Decline
+                                            </a>
+                                        </p>
+                                        <hr>
+                                    </div>
+
+                            <?php } ?>
+                                </div>
                             </td>
                         </tr>
                         <?php endforeach;?>
