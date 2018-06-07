@@ -27,10 +27,10 @@ foreach ($edit_data as $row) { ?>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"><?php echo get_phrase('class'); ?></label>
+                            <label class="col-sm-3 control-label">Department</label>
                             <div class="col-sm-6">
                                 <select name="class_id" class="form-control selectboxit" required>
-                                    <option value=""><?php echo get_phrase('select_a_class'); ?></option>
+                                    <option value="">Select Department</option>
                                     <?php
                                     $classes = $this->db->get('class')->result_array();
                                     foreach ($classes as $row2) { ?>

@@ -6,7 +6,7 @@ $edit_data		=	$this->db->get_where('class_routine' , array('class_routine_id' =>
         <?php foreach($edit_data as $row):?>
         <?php echo form_open(site_url('admin/class_routine/do_update/'.$row['class_routine_id'])  , array('class' => 'form-horizontal validatable','target'=>'_top'));?>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label"><?php echo get_phrase('class');?></label>
+                    <label class="col-sm-3 control-label">Department</label>
                     <div class="col-sm-5">
                         <select id="class_id" name="class_id" class="form-control selectboxit" onchange="section_subject_select(this.value , <?php echo $param2;?>)">
                             <?php 

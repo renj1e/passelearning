@@ -28,8 +28,23 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
                         	<i class="entypo-user"></i>
 													<?php
-														$name = $this->db->get_where($this->session->userdata('login_type'), array($this->session->userdata('login_type').'_id' => $this->session->userdata('login_user_id')))->row()->name;
-														echo $name;
+														$name = $this->db->get_where($this->session->userdata('login_type'), [$this->session->userdata('login_type').'_id' => $this->session->userdata('login_user_id')] )->row()->name;
+														$userType = '';
+
+														if ($this->session->userdata('admin_login') == 1)
+														{
+															$userType = 'Admin Account';
+														}
+														elseif ($this->session->userdata('teacher_login') == 1)
+														{
+															$userType = 'Teacher Account';
+														}
+														else
+														{
+															$userType = 'Student Account';
+														}
+
+														echo $name.' ( <b>'. $userType.'</b> ) ';
 													?>
                     </a>
 

@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('class');?></label>
+                        <label for="field-2" class="col-sm-3 control-label">Department</label>
 
                         <div class="col-sm-5">
                             <select name="class_id" class="form-control" data-validate="required" id="class_id"
@@ -62,10 +62,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('section');?></label>
+                        <label for="field-2" class="col-sm-3 control-label">Block</label>
                             <div class="col-sm-5">
                                 <select name="section_id" class="form-control" id="section_selector_holder">
-                                    <option value=""><?php echo get_phrase('select_class_first');?></option>
+                                    <option value="">select Department first</option>
 
                                 </select>
                             </div>

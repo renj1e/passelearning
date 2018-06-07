@@ -19,7 +19,7 @@
 		<img src="<?php echo base_url('uploads/logo.png');?>" width="10%">
 		<h3><?php echo get_settings('system_name');?></h3>
 		<b><?php echo $online_exam_info->title;?></b><br>
-		<b><?php echo get_phrase('class');?>: <?php echo $class;?> | <?php echo get_phrase('section');?>: <?php echo $section;?></b><br>
+		<b>Department: <?php echo $class;?> | Block: <?php echo $section;?></b><br>
 		<b><?php echo get_phrase('subject');?>: <?php echo $subject;?></b><br>
 		<b><?php echo get_phrase('total_marks');?>: <?php echo $total_marks;?></b><br>
 		<b><?php echo get_phrase('time');?>: <?php echo ($online_exam_info->duration / 60) . ' ' . get_phrase('minutes');?></b>

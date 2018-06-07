@@ -16,7 +16,7 @@
 			<thead align="center">
 				<tr>
 					<td align="center"><?php echo get_phrase('name');?></td >
-					<td align="center"><?php echo get_phrase('section');?></td >
+					<td align="center">Block</td >
 					<td align="center"><?php echo get_phrase('id_no');?></td >
 					<td align="center"><?php echo get_phrase('info');?></td >
 					<td align="center"><?php echo get_phrase('options');?></td >

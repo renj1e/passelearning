@@ -6,7 +6,7 @@
 
 <!-- <div class="col-md-3"> -->
 	<div class="form_group">
-	<label class="control-label" style="margin-bottom: 5px;"><?php echo get_phrase('section');?></label>
+	<label class="control-label" style="margin-bottom: 5px;">Block</label>
 		<select name="section_id" id="section_id" class="form-control selectboxit">
 			<?php foreach($sections as $row):?>
 			<option value="<?php echo $row['section_id'];?>"><?php echo $row['name'];?></option>

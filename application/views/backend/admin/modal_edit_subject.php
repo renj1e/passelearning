@@ -14,13 +14,19 @@ foreach ( $edit_data as $row):
 			<div class="panel-body">
                 <?php echo form_open(site_url('admin/subject/do_update/'.$row['subject_id']) , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label"><?php echo get_phrase('name');?></label>
+                    <label class="col-sm-3 control-label">Subject Code</label>
+                    <div class="col-sm-5 controls">
+                        <input type="text" class="form-control" name="code" value="<?php echo $row['code'];?>" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Subject Description</label>
                     <div class="col-sm-5 controls">
                         <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" required/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label"><?php echo get_phrase('class');?></label>
+                    <label class="col-sm-3 control-label">Department</label>
                     <div class="col-sm-5 controls">
                         <select name="class_id" class="form-control selectboxit">
                             <?php 
@@ -38,7 +44,7 @@ foreach ( $edit_data as $row):
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label"><?php echo get_phrase('teacher');?></label>
+                    <label class="col-sm-3 control-label">Instructor</label>
                     <div class="col-sm-5 controls">
                         <select name="teacher_id" class="form-control selectboxit">
                             <?php 

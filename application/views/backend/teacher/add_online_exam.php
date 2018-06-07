@@ -5,7 +5,7 @@
                 <div class="panel-heading">
                     <div class="panel-title" >
                         <i class="entypo-plus-circled"></i>
-                        <?php echo get_phrase('online_exam');?>
+                        Exam / Quizzes
                     </div>
                 </div>
                 <div class="panel-body">
@@ -59,7 +59,7 @@
                 <div class="panel-heading">
                     <div class="panel-title" >
                         <i class="entypo-plus-circled"></i>
-                        <?php echo get_phrase('online_exam');?>
+                        Exam / Quizzes
                     </div>
                 </div>
                 <div class="panel-body">

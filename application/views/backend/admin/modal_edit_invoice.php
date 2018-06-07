@@ -10,7 +10,7 @@ $edit_data		=	$this->db->get_where('invoice' , array('invoice_id' => $param2) )-
                     <label class="col-sm-3 control-label"><?php echo get_phrase('student');?></label>
                     <div class="col-sm-6">
                         <select name="student_id" class="form-control select2" required>
-                        <option value=""><?php echo get_phrase('select_class'); ?></option>
+                        <option value="">Select Department</option>
                             <?php
                             //$this->db->order_by('class_id','asc');
                             $students = $this->db->get('student')->result_array();

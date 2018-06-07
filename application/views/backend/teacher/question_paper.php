@@ -10,9 +10,9 @@
         <tr>
             <th style="width: 60px;">#</th>
             <th><?php echo get_phrase('title');?></th>
-            <th><?php echo get_phrase('class');?></th>
+            <th>Department</th>
             <th><?php echo get_phrase('exam');?></th>
-            <th><?php echo get_phrase('teacher');?></th>
+            <th>Instructor</th>
             <th><?php echo get_phrase('options');?></th>
         </tr>
     </thead>

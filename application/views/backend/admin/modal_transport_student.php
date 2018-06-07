@@ -11,7 +11,7 @@
                     <td><?php echo get_phrase('name');?></td>
                     <td><?php echo get_phrase('email');?></td>
                     <td><?php echo get_phrase('phone');?></td>
-                    <td><?php echo get_phrase('class');?></td>
+                    <td>Department</td>
                 </tr>
             </thead>
             <tbody>

@@ -12,6 +12,14 @@
                 <?php echo form_open(site_url('admin/student/create/') , array('class' => 'form-horizontal form-groups-bordered validate', 'enctype' => 'multipart/form-data'));?>
 
 					<div class="form-group">
+						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('id_no');?></label>
+
+						<div class="col-sm-5">
+							<input type="text" class="form-control" name="student_code" value="<?php echo date('Y').'-'. substr(md5(uniqid(rand(), true)), 0, 7); ?>" data-validate="required" id="class_id"
+								data-message-required="<?php echo get_phrase('value_required');?>">
+						</div>
+					</div>
+					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('name');?></label>
 
 						<div class="col-sm-5">
@@ -52,11 +60,15 @@
 					</div>
 
 					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('id_no');?></label>
+						<label for="field-2" class="col-sm-3 control-label">Semester</label>
 
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="student_code" value="<?php echo substr(md5(uniqid(rand(), true)), 0, 7); ?>" data-validate="required" id="class_id"
-								data-message-required="<?php echo get_phrase('value_required');?>">
+							<select name="sem" class="form-control selectboxit">
+                              <option value=""><?php echo get_phrase('select');?></option>
+                              <option value="1">1st Semester</option>
+                              <option value="2">2nd Semester</option>
+                              <option value="3">Summer</option>
+                          </select>
 						</div>
 					</div>
 

@@ -24,7 +24,7 @@
                     		<th><div>#</div></th>
                     		<th><div><?php echo get_phrase('class_name');?></div></th>
                     		<th><div><?php echo get_phrase('numeric_name');?></div></th>
-                    		<th><div><?php echo get_phrase('teacher');?></div></th>
+                    		<th><div>Instructor</div></th>
                     		<th><div><?php echo get_phrase('options');?></div></th>
 						</tr>
 					</thead>
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label"><?php echo get_phrase('teacher');?></label>
+                                <label class="col-sm-3 control-label">Instructor</label>
                                 <div class="col-sm-5">
                                     <select name="teacher_id" class="form-control" style="width:100%;">
                                     	<?php 

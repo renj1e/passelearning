@@ -5,10 +5,10 @@
 	<div class="col-md-3"></div>
 	<div class="col-md-3">
 		<div class="form_group">
-			<label class="control-label" style="margin-bottom: 5px;"><?php echo get_phrase('class');?></label>
+			<label class="control-label" style="margin-bottom: 5px;">Department</label>
 			<select name="class_id" id="class_id" class="form-control selectboxit" required
 				onchange="get_sections(this.value)"  data-validate="required"  data-message-required="<?php echo get_phrase('value_required');?>">
-				<option value=""><?php echo get_phrase('select_class');?></option>
+				<option value="">Select Department</option>
 				<?php
 					$classes = $this->db->get('class')->result_array();
 					foreach($classes as $row):
@@ -19,9 +19,9 @@
 		</div>
 	</div>
 	<div id="section_holder" class="col-md-3">
-		<label class="control-label" style="margin-bottom: 5px;"><?php echo get_phrase('section');?></label>
+		<label class="control-label" style="margin-bottom: 5px;">Block</label>
 		<select name="section_id" id="section_id" class="form-control selectboxit">
-			<option value=""><?php echo get_phrase('select_class_first');?></option>
+			<option value="">select Department first</option>
 		</select>
 	</div>
 	<div class="col-md-3"></div>

@@ -5,7 +5,7 @@
 ?>
 <div class="row">
 	<div class="col-md-3">
-		<label><?php echo get_phrase('class');?></label>
+		<label>Department</label>
 		<select class="" name="class_id" id="class_id">
 			<option value=""><?php echo get_phrase('select_a_class');?></option>
 			<?php 

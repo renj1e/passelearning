@@ -86,10 +86,10 @@
                             </div>
                             <input type="hidden" class="form-control" name="name_numeric" value="0"/>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label"><?php echo get_phrase('teacher');?></label>
+                                <label class="col-sm-3 control-label">Instructor</label>
                                 <div class="col-sm-5">
                                     <select name="teacher_id" class="form-control select2" style="width:100%;" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>">
-                                        <option value=""><?php echo get_phrase('select_teacher');?></option>
+                                        <option value="">Select Instructor</option>
                                     	<?php 
 										$teachers = $this->db->get('teacher')->result_array();
 										foreach($teachers as $row):

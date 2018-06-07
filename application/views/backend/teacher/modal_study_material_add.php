@@ -44,7 +44,7 @@
 
                     <div class="col-sm-5">
                         <select name="class_id" class="form-control selectboxit" id="class_id" onchange="return get_class_subject(this.value)" required="">
-                        <option value=""><?php echo get_phrase('select_class'); ?></option>
+                        <option value="">Select Department</option>
                             <?php foreach ($class_info as $row) { ?>
                                 <option value="<?php echo $row['class_id']; ?>"><?php echo $row['name']; ?></option>
                             <?php } ?>

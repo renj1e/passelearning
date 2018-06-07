@@ -31,7 +31,7 @@
                                 ?>
                                     <option value="<?php echo $row['exam_id'];?>"
                                         <?php if($exam_id == $row['exam_id'])echo 'selected';?>>
-                                            <?php echo get_phrase('class');?> <?php echo $row['name'];?></option>
+                                            Department <?php echo $row['name'];?></option>
                                 <?php
                                 endforeach;
                                 ?>

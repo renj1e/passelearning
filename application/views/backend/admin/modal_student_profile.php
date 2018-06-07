@@ -44,14 +44,14 @@ foreach($student_info as $row):?>
                 
                     <?php if($row['class_id'] != ''):?>
                     <tr>
-                        <td><?php echo get_phrase('class');?></td>
+                        <td>Department</td>
                         <td><b><?php echo $this->crud_model->get_class_name($row['class_id']);?></b></td>
                     </tr>
                     <?php endif;?>
 
                     <?php if($row['section_id'] != '' && $row['section_id'] != 0):?>
                     <tr>
-                        <td><?php echo get_phrase('section');?></td>
+                        <td>Block</td>
                         <td><b><?php echo $this->db->get_where('section' , array('section_id' => $row['section_id']))->row()->name;?></b></td>
                     </tr>
                     <?php endif;?>

@@ -19,9 +19,9 @@
 
 	<div class="col-md-2">
 		<div class="form-group">
-		<label class="control-label" style="margin-bottom: 5px;"><?php echo get_phrase('class');?></label>
+		<label class="control-label" style="margin-bottom: 5px;">Department</label>
 			<select name="class_id" class="form-control selectboxit" onchange="get_class_subject(this.value)">
-				<option value=""><?php echo get_phrase('select_class');?></option>
+				<option value="">Select Department</option>
 				<?php
 					$classes = $this->db->get('class')->result_array();
 					foreach($classes as $row):

@@ -108,7 +108,7 @@
                     ?>
                 </h3>
                 <h4 style="color: #696969;">
-    <?php echo get_phrase('class') . ' ' . $class_name; ?> : <?php echo get_phrase('section');?> <?php echo $section_name; ?><br>
+    <?php echo 'Department ' . $class_name; ?> : Block <?php echo $section_name; ?><br>
     <?php echo $m . ', ' . $sessional_year; ?>
                 </h4>
             </div>

@@ -234,6 +234,9 @@ class Admin extends CI_Controller
                 if ($this->input->post('section_id') != '') {
                     $data2['section_id'] = $this->input->post('section_id');
                 }
+                if ($this->input->post('sem') != '') {
+                    $data2['sem'] = $this->input->post('sem');
+                }
                 if ($this->input->post('roll') != '') {
                     $data2['roll']           = $this->input->post('roll');
                 }
@@ -295,11 +298,15 @@ class Admin extends CI_Controller
                 else{
                   $data2['roll'] = null;
                 }
+                if ($this->input->post('sem') != '') {
+                    $data2['sem'] = $this->input->post('sem');
+                }
+
                 $running_year = $this->db->get_where('settings' , array('type'=>'running_year'))->row()->description;
                 $this->db->where('student_id' , $param2);
                 $this->db->where('year' , $running_year);
                 $this->db->update('enroll' , array(
-                    'section_id' => $data2['section_id'] , 'roll' => $data2['roll']
+                    'section_id' => $data2['section_id'], 'roll' => $data2['roll'], 'sem' => $data2['sem']
                 ));
 
                 move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $param2 . '.jpg');
@@ -687,6 +694,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect(site_url('login'), 'refresh');
         if ($param1 == 'create') {
+            $data['code']       = $this->input->post('code');
             $data['name']       = $this->input->post('name');
             $data['class_id']   = $this->input->post('class_id');
             $data['year']       = $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description;
@@ -699,6 +707,7 @@ class Admin extends CI_Controller
             redirect(site_url('admin/subject/' . $data['class_id']), 'refresh');
         }
         if ($param1 == 'do_update') {
+            $data['code']       = $this->input->post('code');
             $data['name']       = $this->input->post('name');
             $data['class_id']   = $this->input->post('class_id');
             $data['teacher_id'] = $this->input->post('teacher_id');

@@ -11,9 +11,9 @@
 
         <div class="col-md-3">
             <div class="form-group">
-                <label class="control-label" style="margin-bottom: 5px;"><?php echo get_phrase('class'); ?></label>
+                <label class="control-label" style="margin-bottom: 5px;">Department</label>
                 <select class="form-control selectboxit" name="class_id" onchange="select_section(this.value)">
-                    <option value=""><?php echo get_phrase('select_class'); ?></option>
+                    <option value="">Select Department</option>
                     <?php foreach ($class as $row): ?>
                         <option value="<?php echo $row['class_id']; ?>"<?php if ($class_id == $row['class_id']) echo 'selected'; ?> ><?php echo $row['name']; ?></option>
                     <?php endforeach; ?>

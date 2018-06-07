@@ -17,8 +17,16 @@ foreach ($edit_data as $row):
 				
                 <?php echo form_open(site_url('admin/student/do_update/'.$row['student_id'].'/'.$row['class_id'])  , array('class' => 'form-horizontal form-groups-bordered validate', 'enctype' => 'multipart/form-data'));?>
                 
-                	
-	
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('id');?></label>
+                        
+						<div class="col-sm-5">
+							<input type="text" class="form-control" name="student_code"
+								value="<?php echo $this->db->get_where('student' , array(
+                                    'student_id' => $row['student_id']
+                                ))->row()->student_code;?>">
+						</div>
+					</div>	
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('photo');?></label>
                         
@@ -50,7 +58,7 @@ foreach ($edit_data as $row):
 					</div>
 
 					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('class');?></label>
+						<label for="field-1" class="col-sm-3 control-label">Department</label>
                         
 						<div class="col-sm-5">
 							<input type="text" class="form-control" name="class" disabled
@@ -59,11 +67,11 @@ foreach ($edit_data as $row):
 					</div>
 
 					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('section');?></label>
+						<label for="field-2" class="col-sm-3 control-label">Block</label>
                         
 						<div class="col-sm-5">
 							<select name="section_id" class="form-control selectboxit">
-                              <option value=""><?php echo get_phrase('select_section');?></option>
+                              <option value="">select Block</option>
                               <?php
                               	$sections = $this->db->get_where('section' , array('class_id' => $row['class_id']))->result_array();
                               	foreach($sections as $row2):
@@ -73,16 +81,31 @@ foreach ($edit_data as $row):
                           <?php endforeach;?>
                           </select>
 						</div> 
-					</div>
+					</div>			
 
 					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('id');?></label>
-                        
+						<label for="field-2" class="col-sm-3 control-label">Semester</label>
+						<?php
+							if ($row['sem'] == 1)
+							{
+								$sem = '1st Semester';
+							}
+							elseif ($row['sem'] == 2)
+							{
+								$sem = '2nd Semester';
+							}
+							else
+							{
+								$sem = 'Summer';
+							}
+						?>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="student_code"
-								value="<?php echo $this->db->get_where('student' , array(
-                                    'student_id' => $row['student_id']
-                                ))->row()->student_code;?>">
+							<select name="sem" class="form-control selectboxit">
+                              <option value="">Selected: <?php echo $sem;?></option>
+                              <option value="1">First Semester</option>
+                              <option value="2">Second Semester</option>
+                              <option value="3">Summer</option>
+                          </select>
 						</div>
 					</div>					
 					

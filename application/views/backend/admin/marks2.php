@@ -18,7 +18,7 @@
                 <table border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
                 	<tr>
                         <td><?php echo get_phrase('select_exam');?></td>
-                        <td><?php echo get_phrase('select_class');?></td>
+                        <td>Select Department</td>
                         <td><?php echo get_phrase('select_subject');?></td>
                         <td>&nbsp;</td>
                 	</tr>
@@ -33,7 +33,7 @@
                                 ?>
                                     <option value="<?php echo $row['exam_id'];?>"
                                         <?php if($exam_id == $row['exam_id'])echo 'selected';?>>
-                                            <?php echo get_phrase('class');?> <?php echo $row['name'];?></option>
+                                            Department <?php echo $row['name'];?></option>
                                 <?php
                                 endforeach;
                                 ?>

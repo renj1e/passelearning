@@ -50,7 +50,7 @@ foreach ($edit_data as $row):
 					</div>
 
 					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('class');?></label>
+						<label for="field-1" class="col-sm-3 control-label">Department</label>
                         
 						<div class="col-sm-5">
 							<input type="text" class="form-control" name="class" disabled
@@ -59,11 +59,11 @@ foreach ($edit_data as $row):
 					</div>
 
 					<div class="form-group">
-						<label for="field-2" class="col-sm-3 control-label"><?php echo get_phrase('section');?></label>
+						<label for="field-2" class="col-sm-3 control-label">Block</label>
                         
 						<div class="col-sm-5">
 							<select name="section_id" class="form-control selectboxit">
-                              <option value=""><?php echo get_phrase('select_section');?></option>
+                              <option value="">select Block</option>
                               <?php
                               	$sections = $this->db->get_where('section' , array('class_id' => $row['class_id']))->result_array();
                               	foreach($sections as $row2):

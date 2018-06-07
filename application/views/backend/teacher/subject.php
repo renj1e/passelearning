@@ -18,9 +18,9 @@
                 <table class="table table-bordered datatable" id="table_export">
                 	<thead>
                 		<tr>
-                    		<th><div><?php echo get_phrase('class');?></div></th>
+                    		<th><div>Department</div></th>
                     		<th><div><?php echo get_phrase('subject_name');?></div></th>
-                    		<th><div><?php echo get_phrase('teacher');?></div></th>
+                    		<th><div>Instructor</div></th>
 						</tr>
 					</thead>
                     <tbody>

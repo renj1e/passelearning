@@ -33,7 +33,7 @@ $edit_data		=	$this->db->get_where('book' , array('book_id' => $param2) )->resul
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label"><?php echo get_phrase('class');?></label>
+                    <label class="col-sm-3 control-label">Department</label>
                     <div class="col-sm-5">
                         <select name="class_id" class="form-control selectboxit">
                             <?php 

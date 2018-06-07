@@ -18,7 +18,7 @@
 
         <div class="col-md-3">
             <div class="form-group">
-            <label class="control-label"><?php echo get_phrase('class');?></label>
+            <label class="control-label">Department</label>
                 <select name="class_id" class="form-control selectboxit">
                 <?php 
                 	$classes = $this->db->get('class')->result_array();

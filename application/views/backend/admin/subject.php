@@ -22,8 +22,7 @@
                 <table class="table table-bordered datatable" id="table_export">
                 	<thead>
                 		<tr>
-                    		<th><div>Department</div></th>
-                    		<th><div><?php echo get_phrase('subject_name');?></div></th>
+                    		<th><div>Code:Description</div></th>
                     		<th><div>Instructor</div></th>
                     		<th><div><?php echo get_phrase('options');?></div></th>
 						</tr>
@@ -32,8 +31,7 @@
                     	<?php $count = 1;
 											foreach($subjects as $row):?>
                         <tr>
-							<td><?php echo $this->crud_model->get_type_name_by_id('class',$row['class_id']);?></td>
-							<td><?php echo $row['name'];?></td>
+							<td><b><?php echo $row['code'];?></b>: <?php echo $row['name'];?></td>
 							<td><?php echo $this->crud_model->get_type_name_by_id('teacher',$row['teacher_id']);?></td>
 							<td>
                             <div class="btn-group">
@@ -75,7 +73,13 @@
                 	<?php echo form_open(site_url('admin/subject/create') , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
                         <div class="padded">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label"><?php echo get_phrase('name');?></label>
+                                <label class="col-sm-3 control-label">Subject Code</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="code" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Subject Description</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" name="name" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>"/>
                                 </div>
@@ -84,7 +88,7 @@
                                 <label class="col-sm-3 control-label">Department</label>
                                 <div class="col-sm-5">
                                     <select name="class_id" class="form-control select2" style="width:100%;" required>
-                                    <option value=""><?php echo get_phrase('select_class'); ?></option>
+                                    <option value="">Select Department</option>
                                     	<?php
 										$classes = $this->db->get('class')->result_array();
 										foreach($classes as $row):
@@ -103,7 +107,7 @@
                                 <label class="col-sm-3 control-label">Instructor</label>
                                 <div class="col-sm-5">
                                     <select name="teacher_id" class="form-control selectboxit" style="width:100%;">
-                                        <option value=""><?php echo get_phrase('select_teacher');?></option>
+                                        <option value="">Select Instructor</option>
                                     	<?php
 										$teachers = $this->db->get('teacher')->result_array();
 										foreach($teachers as $row):

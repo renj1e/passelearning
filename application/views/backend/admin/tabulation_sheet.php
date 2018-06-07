@@ -4,7 +4,7 @@
 		<?php echo form_open(site_url('admin/tabulation_sheet'));?>
 			<div class="col-md-4">
 				<div class="form-group">
-					<label class="control-label"><?php echo get_phrase('class');?></label>
+					<label class="control-label">Department</label>
 					<select name="class_id" class="form-control selectboxit" id = 'class_id'>
                         <option value=""><?php echo get_phrase('select_a_class');?></option>
                         <?php 
