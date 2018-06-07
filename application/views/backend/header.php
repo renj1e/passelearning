@@ -27,7 +27,7 @@
 		<li class="dropdown language-selector">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
                         	<i class="entypo-user"></i>
-													<?php
+													<?php 
 														$name = $this->db->get_where($this->session->userdata('login_type'), [$this->session->userdata('login_type').'_id' => $this->session->userdata('login_user_id')] )->row()->name;
 														$userType = '';
 

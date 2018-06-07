@@ -21,7 +21,7 @@ $system_name  = $this->db->get_where('settings', array('type' => 'system_name'))
       <link rel="stylesheet" href="<?php echo base_url('assets/login_page/css/main.css');?>">
       <link rel="stylesheet" href="<?php echo base_url('assets/login_page/css/style.css');?>">
       <script src="<?php echo base_url('assets/login_page/js/vendor/modernizr-2.8.3.min.js');?>"></script>
-		  <link href="shttps://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+		  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
     </head>
     <body>
