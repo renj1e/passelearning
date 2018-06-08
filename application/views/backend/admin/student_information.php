@@ -200,9 +200,16 @@
                     </thead>
                     <tbody>
                         <?php
-                                $students   =   $this->db->get_where('enroll' , array(
-                                    'class_id'=>$class_id , 'section_id' => $row['section_id'] , 'year' => $running_year
-                                ))->result_array();
+                                if ($class_id > 0)
+                                {
+                                        $students   =   $this->db->get_where('enroll' , array(
+                                            'class_id' => $class_id , 'year' => $running_year , 'sem' => $this->db->get_where('settings' , array('type' => 'running_sem_by_year'))->row()->description
+                                        ))->result_array();
+                                }
+                                else
+                                {
+                                        $students   =   $this->db->get_where('enroll' , array('year' => $running_year, 'sem' => $this->db->get_where('settings' , array('type' => 'running_sem_by_year'))->row()->description))->result_array();
+                                }
                                 foreach($students as $row):?>
                         <tr>
                             <td><?php echo $this->db->get_where('student' , array(
@@ -237,14 +244,6 @@
                                         Action <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-default pull-right" role="menu">
-
-                                        <!-- STUDENT MARKSHEET LINK  -->
-                                        <li>
-                                            <a href="<?php echo site_url('admin/student_marksheet/'.$row['student_id']);?>">
-                                                <i class="entypo-chart-bar"></i>
-                                                    <?php echo get_phrase('mark_sheet');?>
-                                                </a>
-                                        </li>
 
                                         <!-- STUDENT PROFILE LINK -->
                                         <li>

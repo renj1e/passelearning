@@ -36,19 +36,11 @@ foreach ( $edit_data as $row):
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Department</label>
                     <div class="col-sm-5 controls">
-                        <select name="class_id" class="form-control">
-                            <?php 
-                            $classes = $this->db->get('class')->result_array();
-                            foreach($classes as $row2):
-                            ?>
-                                <option value="<?php echo $row2['class_id'];?>"
-                                    <?php if($row['class_id'] == $row2['class_id'])echo 'selected';?>>
-                                        <?php echo $row2['name'];?>
-                                            </option>
-                            <?php
-                            endforeach;
-                            ?>
-                        </select>
+                        <?php
+                            $dept = $this->db->query('SELECT * FROM `class` WHERE `class_id`='.$row["class_id"])->result_array()[0];
+                        ?>
+                        <input type="text" name="" class="form-control" value="<?php echo $dept['name'];?>" readonly="yes">
+                        <input type="hidden" name="class_id" class="form-control" value="<?php echo $row['class_id'];?>">
                     </div>
                 </div>
                 <div class="form-group">

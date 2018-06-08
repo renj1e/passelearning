@@ -298,15 +298,13 @@ class Admin extends CI_Controller
                 else{
                   $data2['roll'] = null;
                 }
-                if ($this->input->post('sem') != '') {
-                    $data2['sem'] = $this->input->post('sem');
-                }
 
                 $running_year = $this->db->get_where('settings' , array('type'=>'running_year'))->row()->description;
+                $running_sem_by_year = $this->db->get_where('settings' , array('type'=>'running_sem_by_year'))->row()->description;
                 $this->db->where('student_id' , $param2);
                 $this->db->where('year' , $running_year);
                 $this->db->update('enroll' , array(
-                    'section_id' => $data2['section_id'], 'roll' => $data2['roll'], 'sem' => $data2['sem']
+                    'section_id' => $data2['section_id'], 'roll' => $data2['roll'], 'sem' => $running_sem_by_year
                 ));
 
                 move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $param2 . '.jpg');

@@ -95,20 +95,11 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Department</label>
                                 <div class="col-sm-5">
-                                    <select name="class_id" class="form-control select2" style="width:100%;" required>
-                                    <option value="">Select Department</option>
-                                    	<?php
-										$classes = $this->db->get('class')->result_array();
-										foreach($classes as $row):
-										?>
-                                    		<option value="<?php echo $row['class_id'];?>"
-                                                <?php if($row['class_id'] == $class_id) echo 'selected';?>>
-                                                    <?php echo $row['name'];?>
-                                            </option>
-                                        <?php
-										endforeach;
-										?>
-                                    </select>
+                                    <?php
+                                        $dept = $this->db->query('SELECT * FROM `class` WHERE `class_id`='.$row["class_id"])->result_array()[0];
+                                    ?>
+                                    <input type="text" name="" class="form-control" value="<?php echo $dept['name'];?>" readonly="yes">
+                                    <input type="hidden" name="class_id" class="form-control" value="<?php echo $class_id;?>">
                                 </div>
                             </div>
                             <div class="form-group">
