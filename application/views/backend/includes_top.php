@@ -7,6 +7,13 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/neon-theme.css');?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/neon-forms.css');?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/custom.css');?>">
+<style type="text/css">
+	.sidebar-menu ul li a,
+	.sidebar-menu ul li a:hover,
+	.sidebar-menu ul li a:focus {
+		color: #FFF;
+	}
+</style>
 <?php
     $skin_colour = $this->db->get_where('settings' , array(
         'type' => 'skin_colour'
@@ -15,7 +22,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/skins/black.css');?>">
 
 <?php endif;?>
-
+<?php $this->output->delete_cache();?>
 <?php if ($text_align == 'right-to-left') : ?>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/neon-rtl.css');?>">
 <?php endif; ?>

@@ -134,7 +134,7 @@ body {
 .page-container .sidebar-menu #main-menu li a {
     padding-top: 12px;
     padding-bottom: 12px;
-    color: #868aa8 !important;
+    color: #FFF !important;
 }
 .page-container .sidebar-menu #main-menu li a:hover,
 .page-container .sidebar-menu #main-menu li.active a{

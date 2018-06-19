@@ -592,6 +592,7 @@ class Admin extends CI_Controller
             $data['social_links'] = json_encode($links);
 
             $validation = email_validation_for_edit($data['email'], $param2, 'teacher');
+            
             if($validation == 1){
                 $this->db->where('teacher_id', $param2);
                 $this->db->update('teacher', $data);
